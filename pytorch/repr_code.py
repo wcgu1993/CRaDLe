@@ -29,10 +29,9 @@ def repr_code(args):
     model.eval()
 
     data_path = args.data_path+args.dataset+'/'
-    use_set = eval(config['dataset_name'])(data_path, config['train_name'], config['name_len'],
-                              config['train_tokens'], config['tokens_len'],
-                              config['train_index'], config['index_len'],
-                              config['train_block'], config['block_len'])
+    use_set = eval(config['dataset_name'])(data_path, config['use_tokens'], config['tokens_len'],
+                              config['use_index'], config['index_len'],
+                              config['use_block'], config['block_len'])
 
     data_loader = torch.utils.data.DataLoader(dataset=use_set, batch_size=args.batch_size, 
                                   shuffle=False, drop_last=False, num_workers=1)

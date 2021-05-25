@@ -25,13 +25,7 @@ class JointEmbeder(nn.Module):
 
         self.tok_encoder = TokenEncoder(config['n_words'], config['emb_size'], config['lstm_dims'], config['block_len'])
         self.desc_encoder = SeqEncoder(config['n_words'], config['emb_size'], config['lstm_dims'])
-        
-        self.init_weights()
-        
-    def init_weights(self):# Initialize Linear Weight 
-        for m in [self.w_name, self.w_api, self.w_tok, self.fuse3]:        
-            m.weight.data.uniform_(-0.1, 0.1)#nn.init.xavier_normal_(m.weight)
-            nn.init.constant_(m.bias, 0.) 
+         
 
     def code_encoding(self, tokens, index):
         tok_repr = self.tok_encoder(tokens, index)

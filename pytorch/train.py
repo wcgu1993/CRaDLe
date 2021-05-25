@@ -64,13 +64,11 @@ def train(args):
     # Load data
     ###############################################################################
     data_path = DATASET_PATH+"/train/" if IS_ON_NSML else args.data_path+args.dataset+'/'
-    train_set = eval(config['dataset_name'])(data_path, config['train_name'], config['name_len'],
-                                  config['train_tokens'], config['tokens_len'],
+    train_set = eval(config['dataset_name'])(data_path, config['train_tokens'], config['tokens_len'],
                                   config['train_index'], config['index_len'],
                                   config['train_block'], config['block_len'],
                                   config['train_desc'], config['desc_len'])
     valid_set = eval(config['dataset_name'])(data_path,
-                                  config['valid_name'], config['name_len'],
                                   config['valid_tokens'], config['tokens_len'],
                                   config['valid_index'], config['index_len'],
                                   config['valid_block'], config['block_len'],

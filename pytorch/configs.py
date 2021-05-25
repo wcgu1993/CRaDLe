@@ -14,6 +14,7 @@ def config_JointEmbeder():
             'valid_block':'valid.block.h5',
             'valid_desc':'valid.desc.h5',
             #use data (computing code vectors)
+            'use_codebase':'use.rawcode.txt',
             'use_tokens':'use.ordered.tokens.h5',
             'use_index': 'use.index.h5',
             'use_block': 'use.block.h5',

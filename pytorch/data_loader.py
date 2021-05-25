@@ -15,7 +15,7 @@ class CodeSearchDataset(data.Dataset):
     Dataset that has only positive samples.
     """
     def __init__(self, data_dir,
-                 f_tokens, max_tok_len, f_index, f_block, max_block_len, f_descs = None, max_desc_len = None):
+                 f_tokens, max_tok_len, f_index, max_index_len, f_block, max_block_len, f_descs = None, max_desc_len = None):
         self.max_tok_len = max_tok_len
         self.max_desc_len = max_desc_len
         self.max_block_len = max_block_len
@@ -38,8 +38,8 @@ class CodeSearchDataset(data.Dataset):
             self.idx_descs = table_desc.get_node('/indices')[:]
 
         if f_descs is not None:
-            assert self.idx_tokens.shape[0]==self.idx_descs.shape[0]
-        self.data_len = self.idx_tokens.shape[0]
+            assert self.tok_blocks.shape[0]==self.idx_descs.shape[0]
+        self.data_len = self.tok_blocks.shape[0]
         print("{} entries".format(self.data_len))
         
     def pad_seq(self, seq, maxlen):
@@ -83,7 +83,7 @@ class CodeSearchDataset(data.Dataset):
             bad_desc = self.pad_seq(bad_desc, self.max_desc_len)
 
             return tokens, index, good_desc, good_desc_len, bad_desc, bad_desc_len
-        return tokens, tok_len
+        return tokens, index
 
         
     def __len__(self):
