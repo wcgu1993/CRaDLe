@@ -1,7 +1,6 @@
-# Deep Code Search
+# CRaDLe: Deep Code Retrieval Based on Semantic Dependency Learning
 
-PyTorch implementation of [Deep Code Search](https://guxd.github.io/papers/deepcs.pdf).
-
+PyTorch implementation of [CRaDLe](https://reader.elsevier.com/reader/sd/pii/S0893608021001568?token=9D9A8D8C785F194BEAC362C63CC2B65CCCC69293124E0BC360103DAAFBBF43DC86EB38936D6045AC736FE10A5E564700&originRegion=us-east-1&originCreation=20210525121434). This model is modified from the project shared by [Deep Code Search](https://github.com/guxd/deep-code-search).
 ## Dependency
 > Tested in MacOS 10.12, Ubuntu 16.04
 * Python 3.6
@@ -18,28 +17,20 @@ PyTorch implementation of [Deep Code Search](https://guxd.github.io/papers/deepc
  - `models`: neural network models for code/desc representation and similarity measure.
  - `modules.py`: basic modules for model construction.
  - `train.py`: train and validate code/desc representaton models; 
- - `repr_code.py`: encode code into vectors and store them to a file; 
- - `search.py`: perform code search;
  - `configs.py`: configurations for models defined in the `models` folder. 
    Each function defines the hyper-parameters for the corresponding model.
  - `data_loader.py`: A PyTorch dataset loader.
  - `utils.py`: utilities for models and training. 
 
-## Pretrained Model
-   If you want a quick test, [here]() is a pretrained model. Put it in `./output/JointEmbeder/github/models/` and run:
-   ```
-   python search.py --reload_from 
-   ```
- 
+
 ## Usage
 
    ### Data Preparation
-  The `/data` folder provides a small dummy dataset for quick deployment.  
   To train and test our model:
   
-  1) Download and unzip real dataset from [Google Drive](https://drive.google.com/drive/folders/1GZYLT_lzhlVczXjD6dgwVUvDDPHMB6L7?usp=sharing) or [Baidu Pan](https://pan.baidu.com/s/1U_MtFXqq0C-Qh8WUFAWGvg) for Chinese users.
+  1) Download and unzip real dataset from [Google Drive](https://drive.google.com/drive/folders/1QtQPq9clBafqCcp80GwoAau8DlUqLeor?usp=sharing).
   
-  2) Replace each file in the `/data` folder with the corresponding real file. 
+  2) Put all the data files into the `/data/github` folder . 
   
    ### Configuration
    Edit hyper-parameters and settings in `config.py`
@@ -50,28 +41,16 @@ PyTorch implementation of [Deep Code Search](https://guxd.github.io/papers/deepc
    python train.py --model JointEmbeder
    ```
    
-   ### Code Embedding
-   
-   ```bash
-   python repr_code.py --model JointEmbeder --reload_from XXX
-   ```
-   
-   ### Search
-   
-   ```bash
-   python search.py --model JointEmbeder --_reload_from XXX
-   ```
-   
 
 ## Citation
 
  If you find it useful and would like to cite it, the following would be appropriate:
 ```
-@inproceedings{gu2018deepcs,
-  title={Deep Code Search},
-  author={Gu, Xiaodong and Zhang, Hongyu and Kim, Sunghun},
-  booktitle={Proceedings of the 2018 40th International Conference on Software Engineering (ICSE 2018)},
-  year={2018},
-  organization={ACM}
+@article{gu2020cradle,
+  title={CRaDLe: Deep Code Retrieval Based on Semantic Dependency Learning},
+  author={Wenchao Gu and Zongjie Li and Cuiyun Gao and Chaozheng Wang and Hongyu Zhang and Zenglin Xu and Michael R. Lyu},
+  journal={Neural Networks},
+  year={2021}
 }
 ```
+ (2021). CRaDLe: Deep code retrieval based on semantic Dependency Learning. Neural Networks.
